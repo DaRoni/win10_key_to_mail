@@ -36,17 +36,17 @@ $Global:value
 			}
 			Else
 			{
-				Write-Warning "���������� ������ � Windows 10"
+				Write-Warning "Запускайте скрипт в Windows 10"
 			}
 		}
 		Else
 		{
-			Write-Warning "���������� ������ � Windows 10"
+			Write-Warning "Запускайте скрипт в Windows 10"
 		}		
 	}
 	Else
 	{
-		Write-Warning "�������� ������, �� ������� �������� ����"
+		Write-Warning "Возникла ошибка, не удалось получить ключ"
 	}
 }
 #Convert binary to serial number 
@@ -94,7 +94,7 @@ Function ConvertToKey($Key)
 	$keyproduct   
 }
 GetWin10Key
-
+#укажите логин пароль
 $Username = "";
 $Password = "";
 sleep 1
@@ -107,7 +107,7 @@ function Send-ToEmail([string]$email)
     $COMPUTERNAME_FQDN=[System.Net.Dns]::GetHostByName($env:computerName).HostName
     $message.Subject = "Windows Key from "+ $COMPUTERNAME_FQDN;
     $message.Body = "$Global:value";   
-
+#укажите даные сервера почты
     $smtp = new-object Net.Mail.SmtpClient("host", "port");
     $smtp.EnableSSL = $true;
     $smtp.Credentials = New-Object System.Net.NetworkCredential($Username, $Password);
@@ -118,7 +118,7 @@ function Send-ToEmail([string]$email)
     $message.Dispose();
  }
 
-
+#укажите email куда нужно отправить ключи
 Send-ToEmail  -email "to";
 Send-ToEmail  -email "to";
 sleep 2
